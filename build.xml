@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<project name="Práctica 3 [CC 2017-1]" default="run1" basedir=".">
+  <description>
+    Facultad de Ciencias, UNAM
+	Computación Concurrente 2017-1
+
+	Práctica 3
+  </description>
+
+  <!-- Global properties -->
+  <property name="src"          location="src" />
+  <property name="build"        location="bin" />
+
+  <path id="project.class.path">
+	<pathelement location="${build}" />
+  </path>
+  <!-- Clean the project -->
+  <target name="clean" description="clean up" >
+    <delete dir="${build}"/>
+  </target>
+
+  <!-- Create the build structure used by project -->
+  <target name="init">
+    <mkdir dir="${build}"/>
+  </target>
+
+  <!-- Compiles the Java code -->
+  <target name="compile" depends="init" description="compile the source " >
+    <javac srcdir="${src}" destdir="${build}" debug="true" debuglevel="lines,vars,source">
+      <classpath refid="project.class.path" />
+    </javac>
+  </target>
+
+  <!-- Run the project -->
+  <target name="run1" depends="compile">
+    <java fork="true" classname="sync.Ejercicio1">
+      <classpath refid="project.class.path" />
+      <arg value="${input}"/>
+    </java>
+  </target>
+
+  <target name="run2" depends="compile">
+    <java fork="true" classname="sync.Ejercicio2">
+      <classpath refid="project.class.path" />
+      <arg value="${input}"/>
+    </java>
+  </target>
+
+  <target name="run3" depends="compile">
+    <java fork="true" classname="sync.Ejercicio3">
+      <classpath refid="project.class.path" />
+      <arg value="${input}"/>
+    </java>
+  </target>
+
+</project>
